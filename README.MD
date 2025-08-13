@@ -1,35 +1,21 @@
-# Notları Alma
-
-Aşağıdaki klasörleri açarak içindeki dosya ve alt klasörleri görebilirsiniz:
+# PROJECTS LINKS
 
 <details>
 <summary>c_data_structers</summary>
 
-<details>
-<summary>hızlı_temel_notlar</summary>
+	<details>
+	<summary>linked_lists</summary>
 
-<!-- Buraya hızlı_temel_notlar içindeki dosya veya klasörleri ekleyebilirsin -->
+	<details>
+	<summary>singly_linked_list</summary>
 
-</details>
+		</details>
 
-<details>
-<summary>linked_lists</summary>
+		- [singly_linked_list.c](c_data_structers/linked_lists/singly_linked_list.c)
 
-<details>
-<summary>singly_linked_list</summary>
+		<details>
 
-<!-- Buraya singly_linked_list içindeki dosya veya klasörleri ekleyebilirsin -->
-
-</details>
-
-- [singly_linked_list.c](c_data_structers/linked_lists/singly_linked_list.c)
-
-<details>
-<summary>zone_note</summary>
-
-<!-- Buraya zone_note içindeki dosya veya klasörleri ekleyebilirsin -->
-
-</details>
+	</details>
 
 </details>
 
