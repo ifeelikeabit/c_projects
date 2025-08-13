@@ -1,0 +1,43 @@
+DUZENLEME NOTU:
+bağlı listelerde 3 farklı liste var. 
+tek yönü olana  (singly_linked_list.c) 
+sondaki baştakini gösterene (circular_linked_list) ve 
+ileri-geri gezinmeye sahip olana (doubly_linked_list.c) içerisinde yer verdim
+
+basit işlemler için singly , döngüsel işlemler içinde circular kullanmak mantıklı
+
+o anda çok fazla durum hesaplanacak ise doubly en mantıklısı. Ama doubly de diğerine göre daha fazla hafızada yer kaplıyor. Bunu göze almak
+gerekli
+
+
+
+
+
+liste temlde 2 veri içerir  [data][next_pointer] 
+ pointerlar bir sonraki elemanın adresini tutar
+
+ birtane mutlaka root elemanına ihtiyacımız var.
+Sadece root elemanının adresini biliyorsak eğer tüm listeye next_pointer next_pointer diyerek erişebiliriz
+
+Bu structure i oluşturuken next_pointerina null değer atamamız önemli yani her oluştuğunda bir sonraki pointer boş olacak buda 
+listenin son elemanını belirtmemizi sağlıyacak. Bu tür null atamalarına sentinel deniyor. 
+
+--LISTEYI GEZME:
+Listeyi gezmek için bir iteratore ihtyiacımız var. Bu boş bir liste elemanı ve ilk değeri her zaman rootun bir kopyası
+her bir sonraki elemana eriştiğimizde bu iteratoru bir sonraki elemana eşitliyoruz ve bu sayede liste üzerinde gezme imkanımız oluyor 
+Eğer iterator == NULL ise gezme sonlanır ve iteratore tekrardan root node ataması yapılır ve tüm elemanların verileni ekrana bastirabiliriz ama
+Bu ifade yalnız bizim son elemanı kaybetmemize sebeiyet verir. eğerki yeni bir eleman ekliyeceksek iteratorun kendisi null olduğunda değilde
+ iterator->next_pointer == NULL olduğunda durmamız gerekli . Bu sayede son eleman artık iteratormuz
+ olmuş oluyor ve next_pointerina null değer yerine yeni bir eleman ekleyebiliriz
+ 
+--ELEMAN EKLEME ,SIRALI:
+Genel Amaçlı eleman eklemek için 4 durumu düşünmeliyiz. Normalde düz mantık her elemanı sona ekleyebiliri ama öyle yaparsak eğer 
+listenin uzunluğundan bağımsız olarak mutlaka son elemana sırayla gitmemiz lazım. Elemanları sıralayrak nasıl gideriz peki ?
+node add(root_var,value)
+  -ilk durum eğerki rootumuz Null bir değerse yeni bir node elemanı oluşturup value değeri atanıp return olarak oluşan root değeri verilmeli
+  -ikinci durumda ise eğerki 1 veya 1 den fazla eleman varsa ve ilk elemanın yani root elemanımızın valuesi ekleyceğimiz valudedn büyükse
+yeni gelen eleman yeni root olmalı. Ve next_pointer değeri de eski rootu göstermeli. Return olarakda aynı şekilde yeni root verilecek
+   -üçüncü durumda eğerki value değerimiz iteratorun->next->value sinden küçükse ozaman burda duruyoruz. bir temp eleman oluşturduk. Önce bu elemana
+   iterator->next_pointerını atadık. artık bizden büyük değeri gösteriyoruz next_pointer ile. Daha sonra bizden klüçük olan değerin next_pointerını 
+   kendimiz yapıyoruz. Value değerini yeni elemana atamayı unutma.
+   -son olarakda eğerki iter->next_pointer bir null ise iter->next_pointer = yeni ve yeni-> value = value olacak. 
