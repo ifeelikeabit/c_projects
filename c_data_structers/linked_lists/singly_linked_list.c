@@ -46,8 +46,8 @@ void print_list(node *root){//Tüm listeyi root null olana kadar yazdırır.
 
 
 void link(node *root, node* n){ //Herhangi bir node'u istenilen root'un sonuna bağlar.
-	if(root==NULL){perror("Root bir deger ifade etmiyor"); return;} 
-	if(n==NULL) {perror("Eklenecek node bir deger ifade etmiyor"); return;}
+	if(root==NULL){fprintf(stderr,"Root bir deger ifade etmiyor"); return;} 
+	if(n==NULL) {fprintf(stderr,"Eklenecek node bir deger ifade etmiyor"); return;}
 	while(root->next!=NULL){
 		root = root->next;
 	}
@@ -56,6 +56,7 @@ void link(node *root, node* n){ //Herhangi bir node'u istenilen root'un sonuna b
 }
 
 void wipe(node **root){ //Tüm listeyi baştan sona siler.
+	if(root==NULL){fprintf(stderr,"Wipe calismadi: Root bir deger ifade etmiyor"); return;} 
 	node *tmp;
 	while(*root!=NULL){
 
@@ -72,11 +73,11 @@ void wipe(node **root){ //Tüm listeyi baştan sona siler.
 void delete_node(node **root , node *n){ //Node'un root olup olmama durumuna bakar ve node u siler.
 		
 	if(*root==NULL){
-		perror("Root bir deger ifade etmiyor\n");
+		fprintf(stderr,"delete_node: Root bir deger ifade etmiyor\n");
 		return;
 	}
 	if(n==NULL){
-		perror("Silinecek node bir deger ifade etmiyor\n");
+		fprintf(stderr,"Silinecek node bir deger ifade etmiyor\n");
 		return;
 	}
 	if(*root==n){ //İlk değer silinecekse.
@@ -89,9 +90,10 @@ node *iter = *root;
 
 while (iter->next != NULL && iter->next != n)iter=iter->next;
 if(iter->next == NULL) {// Listenin sonua geldi ise;
-	perror("Silinecek node bulunamadi\n");
+	fprintf(stderr,"Silinecek node bulunamadi\n");
 	return;
 }
+
 iter->next = n->next;
 free(n);
 return;
@@ -149,9 +151,12 @@ node * add_new_sorted(node **root, int value){//Kucukten buyuge eleman ekler. Ek
 int main(){
 	//örnek
 	node * root = create_node(0);
+	node * a = create_node(1);
 	for(int i=0;i<10;i++){
 		add_new_sorted(&root,i*10);
 	}
+	delete_node(&root, a);
+
 	print_list(root);
 
 	wipe(&root);
