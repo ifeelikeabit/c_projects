@@ -41,3 +41,13 @@ yeni gelen eleman yeni root olmalı. Ve next_pointer değeri de eski rootu göst
    iterator->next_pointerını atadık. artık bizden büyük değeri gösteriyoruz next_pointer ile. Daha sonra bizden klüçük olan değerin next_pointerını 
    kendimiz yapıyoruz. Value değerini yeni elemana atamayı unutma.
    -son olarakda eğerki iter->next_pointer bir null ise iter->next_pointer = yeni ve yeni-> value = value olacak. 
+
+
+
+
+
+Çift Yönlü Bağli Liste(Doubly-List)
+
+
+
+
