@@ -1,0 +1,30 @@
+Stack(Yığın) LIFO (Lasit in Firs Out) mantığına dayanan bir veri yapısıdır. İlk giren en son çıkar aynı şekilde en son giren ilk çıkar
+mantığıyla çalışır. Bu mantık doğrultusunda temelde 2 fonksiyon yazılabilir. Pop ve Push. Pop dizinin en son giren elemanını siler, 
+push ise en sona eleman ekler. Bu veri yapısının işlemesi için tutmamız gereken birkaç veri var. Bunlar;
+tepe , boyut , başlangıç stack.	 
+
+Karşılaacağımız sorunlar sabit olan dizilerin boyutunu artıracağımız zaman ortaya çıkıyor. Bunu çözmenin yollarını ve dikkat edilmesi
+gereken şeyleri sıralıyorum; 
+
+Dizimiz kapasitesine ulaştığı anda dizinin kapasitesini artırmamız lazım. Ama bu işlemi 1 er 1er artırcaka olursak kapasite belirlememizin 
+bir manası yok. Bundan dolayı her seferinde yığınımızın 2 katı kadar kapasiteyi veriyoruz. 
+
+Aynı şekilde yığınımız küçülmeye başladığında kapasiteyi indirmezek boşa yer kaplar. İndirme işlemini kapasitenin 4 e 1 i yaparsek eğer yeni 
+eleman eklediğimizde halen yığın kadar yer olur.
+
+Peki artırma azaltma işlemlerini sabit diziler üzerinden nasıl yapıcaz. Bunun için sabit dizi kullanmak yerine heapde bir alanı işaret eden 
+dizi pointerları kullanıyoruz. Alanımız dolduğunda yada boşaldığında artıracağaımız ya da azaltacağımız kadar kapasitesine sahip heapde yeni 
+bir alanı işaret eden bir pointer tanımlıyoruz. Tüm verilerimizi teker teker o yeni alanımıza kopyaladıktan sonra eski alanın içeriğini free 
+ile hafızaya verip ardından adresini yeni alanımız olarak güncelliyoruz.
+
+
+
+Fonksiyonlar ve Yapılar:
+
+
+typedef struct stack { stack *; top; large;
+stack *create_stack();
+void pop(stack);
+void push(stack , data);
+
+
