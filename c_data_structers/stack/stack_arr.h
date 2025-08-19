@@ -1,7 +1,6 @@
 #ifndef stack_h
 #define stack_h
 
-#include <stdlib.h> // for size_t 
 
 typedef struct stack{ 
 int *array;
