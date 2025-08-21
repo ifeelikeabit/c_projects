@@ -1,0 +1,5 @@
+Binary Search Tree yapısında her node bir sağ ve sol çocuk tutar
+
+Her node un sağ tarafındaki ondan büyük sol tarafındaki küçüktür.
+
+Her değerden ancak 1 tane tutulabilir. Farklı ağaç yapılarında birden fazla değer her node un count değişkeni ile tutualabilir.
