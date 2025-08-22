@@ -13,12 +13,16 @@ node * create_node(int value) {
 	n-> left = NULL;
 	return n;
 }
-node* search_item(node* root, int value){
+node** search_item(node* root, int value){
 	if(!root)
 		return NULL;
 
-	if(root->value == value)
-		return root;
+
+
+	if(root->value == value){
+		node** n = &root;
+		return n;
+	}
 
 	if(root->value < value) //If the value greater than root value then we continue search recursivly with right child.
 		return search_item(root->right,value);
@@ -30,7 +34,6 @@ node* search_item(node* root, int value){
 	fprintf(stderr, "Unexpected case in search_item\n");
 	return NULL;
 }
-
 
 
 int add_item(node** root, int value){
@@ -52,29 +55,30 @@ int add_item(node** root, int value){
 	return -1;
 }
 
+node *max(node* root){
+	if(!root)
+		return NULL;
 
+	while(root->right) //While root->right not NULL
+		root = root->right;
 
-int del_item(node** root, int value){
-	if((*root)) 
-		return 1;
-	
-	node * temp = search_item(*root, value);
-	if(!temp)
-		return 1;
+	return root;
 
-	if(!(temp->right) && !(temp->left)){
-		free(temp);
-		temp = NULL;
-		return 0;
-	}
 }
 
+int del_item(node** root, int value){
+	if(!(*root)) 
+		return 1;
+	
+	node ** temp = search_item(*root, value);
+	if(!(*temp))
+		return 1;
 
+	if((*temp)->left){
+		max((*temp)->left)->right = (*temp)->right;
+		free(*temp);
+		(*temp) = (*temp)->left;
+		return 0;
+	}
 
-
-
-
-
-
-
-
+}

@@ -11,13 +11,14 @@ struct node* left;
 
 node *create_node(int);
 
-node* search_item(node*,int); //Search item by value. Finded: 1 .Nothing: 0, Error: -1.
+node** search_item(node*,int); //Search item by value. Finded: 1 .Nothing: 0, Error: -1.
 
 int del_item(node **, int); //Delete searched value and fixs tree shifts if we need.
 
 int add_item(node**, int); 
 
-
+node *max(node*);
+node *min(node*);
 
 
 
