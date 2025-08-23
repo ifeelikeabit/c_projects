@@ -23,8 +23,8 @@ node *min(node*);
 
 
 //We can easly make a switch case but i want to show different algorithms with specific name.
-void print_rnl(node*); // Prints tree from big to small (Right Node Left)
-void print_lnr(node*); // Prints tree from small to big (Right Node Left)
+int print_rnl(node*); // Prints tree from big to small (Right Node Left)
+int print_lnr(node*); // Prints tree from small to big (Right Node Left)
 void print_nrl(node*);
 
 

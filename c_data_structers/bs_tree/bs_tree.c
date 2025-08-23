@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include<stdio.h>
 #include<stdlib.h>
 #include "bs_tree.h"
@@ -13,9 +14,9 @@ node * create_node(int value) {
 	n-> left = NULL;
 	return n;
 }
-node** search_item(node* root, int value){
+node** search_item(node* root, int value){ //Gets node pointer pointer who has value.
 	if(!root)
-		return NULL;
+		return NULL;//Cant find.
 
 
 
@@ -76,9 +77,42 @@ int del_item(node** root, int value){
 
 	if((*temp)->left){
 		max((*temp)->left)->right = (*temp)->right;
+		node *new = (*temp)->left;
 		free(*temp);
-		(*temp) = (*temp)->left;
+		(*temp) = new;
 		return 0;
 	}
 
+	if((*temp)->right){ 
+		node *new = (*temp)->right;
+		free(*temp);
+		*temp = new;
+		return 0;
+	}
+	free(*temp);
+	*temp = NULL;
+	return 0;
 }
+
+
+int print_lnr(node * root){
+	if(!root){
+	return -1;
+	}
+	while(1){
+		
+		printf("%d\n",root->left->value);
+		printf("(%d)\n",root->value);
+		printf("%d\n",root->right->value);
+
+	}
+	while(print_lnr(root->right)!=-1){
+		printf("%d\n",root->left->value);
+		printf("(%d)\n",root->value);
+		printf("%d\n",root->right->value);
+
+	}
+return 0;
+}
+
+
