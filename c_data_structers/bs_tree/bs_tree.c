@@ -14,23 +14,24 @@ node * create_node(int value) {
 	n-> left = NULL;
 	return n;
 }
-node** search_item(node* root, int value){ //Gets node pointer pointer who has value.
-	if(!root)
+node** search_item(node** root, int value){ //Gets node pointer pointer who has value.
+	if(!*root)
 		return NULL;//Cant find.
 
 
 
-	if(root->value == value){
-		node** n = &root;
-		return n;
+	if((*root)->value == value){
+		return root;
 	}
 
-	if(root->value < value) //If the value greater than root value then we continue search recursivly with right child.
-		return search_item(root->right,value);
+	if((*root)->value < value) //If the value greater than root value then we continue search recursivly with right child.
+		return search_item(&((*root)->right),value);
 
 
-	if(root->value > value)//If the value less than root value then we continue search recursivly with left child.
-		return search_item(root->left,value);
+	if((*root)->value > value)//If the value less than root value then we continue search recursivly with left child.
+		return search_item(&((*root)->left),value);
+
+
 
 	fprintf(stderr, "Unexpected case in search_item\n");
 	return NULL;
@@ -68,10 +69,12 @@ node *max(node* root){
 }
 
 int del_item(node** root, int value){
+
 	if(!(*root)) 
 		return 1;
 	
-	node ** temp = search_item(*root, value);
+	node ** temp = search_item(root, value);
+	
 	if(!(*temp))
 		return 1;
 
@@ -95,24 +98,15 @@ int del_item(node** root, int value){
 }
 
 
-int print_lnr(node * root){
-	if(!root){
-	return -1;
-	}
-	while(1){
+void print_lnr(node * root){
+	if(!root)
+		return ;
+
+	print_lnr(root->left);
+		printf("%d\n",root->value);
+	print_lnr(root->right);
 		
-		printf("%d\n",root->left->value);
-		printf("(%d)\n",root->value);
-		printf("%d\n",root->right->value);
-
-	}
-	while(print_lnr(root->right)!=-1){
-		printf("%d\n",root->left->value);
-		printf("(%d)\n",root->value);
-		printf("%d\n",root->right->value);
-
-	}
-return 0;
 }
+
 
 

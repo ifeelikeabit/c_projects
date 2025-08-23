@@ -11,7 +11,7 @@ struct node* left;
 
 node *create_node(int);
 
-node** search_item(node*,int); //Search item by value. Finded: 1 .Nothing: 0, Error: -1.
+node** search_item(node**,int); //Search item by value. Finded: 1 .Nothing: 0, Error: -1.
 
 int del_item(node **, int); //Delete searched value and fixs tree shifts if we need.
 
@@ -23,10 +23,11 @@ node *min(node*);
 
 
 //We can easly make a switch case but i want to show different algorithms with specific name.
-int print_rnl(node*); // Prints tree from big to small (Right Node Left)
-int print_lnr(node*); // Prints tree from small to big (Right Node Left)
+void print_rnl(node*); // Prints tree from big to small (Right Node Left)
+void print_lnr(node*); // Prints tree from small to big (Right Node Left)
 void print_nrl(node*);
 
+void wipe(node*);
 
 
 #endif
