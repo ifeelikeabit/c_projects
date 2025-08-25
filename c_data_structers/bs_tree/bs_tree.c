@@ -97,7 +97,6 @@ int del_item(node** root, int value){
 	return 0;
 }
 
-
 void print_lnr(node * root){
 	if(!root)
 		return ;
@@ -105,8 +104,15 @@ void print_lnr(node * root){
 	print_lnr(root->left);
 		printf("%d\n",root->value);
 	print_lnr(root->right);
-		
 }
 
+void wipe(node ** root){
+  if (root == NULL || *root == NULL)
+        return;
 
+    wipe(&((*root)->left));
+    wipe(&((*root)->right));
 
+    free(*root);
+    *root = NULL;
+}

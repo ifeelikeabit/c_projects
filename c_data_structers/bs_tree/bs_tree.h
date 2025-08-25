@@ -27,7 +27,7 @@ void print_rnl(node*); // Prints tree from big to small (Right Node Left)
 void print_lnr(node*); // Prints tree from small to big (Right Node Left)
 void print_nrl(node*);
 
-void wipe(node*);
+void wipe(node**);
 
 
 #endif

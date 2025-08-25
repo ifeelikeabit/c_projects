@@ -20,6 +20,9 @@ print_lnr(root);
 
 
 
-printf("%d",root->value);
+getchar();
+wipe(&root);
+getchar();
+print_lnr(root); 
 
 }
